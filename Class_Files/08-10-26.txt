@@ -1,0 +1,1175 @@
+
+
+mysql> show databases;
++---------------------+
+| Database            |
++---------------------+
+| db1                 |
+| information_schema  |
+| interview questions |
+| mysql               |
+| newdb               |
+| performance_schema  |
+| sakila              |
+| sys                 |
+| world               |
+| x                   |
++---------------------+
+10 rows in set (0.00 sec)
+
+
+mysql> show schemas;
++---------------------+
+| Database            |
++---------------------+
+| db1                 |
+| information_schema  |
+| interview questions |
+| mysql               |
+| newdb               |
+| performance_schema  |
+| sakila              |
+| sys                 |
+| world               |
+| x                   |
++---------------------+
+10 rows in set (0.00 sec)
+
+mysql> select database();
++------------+
+| database() |
++------------+
+| NULL       |
++------------+
+1 row in set (0.00 sec)
+
+mysql> use x;
+Database changed
+mysql> select database();
++------------+
+| database() |
++------------+
+| x          |
++------------+
+1 row in set (0.00 sec)
+
+mysql> create database y;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show schemas;
++---------------------+
+| Database            |
++---------------------+
+| db1                 |
+| information_schema  |
+| interview questions |
+| mysql               |
+| newdb               |
+| performance_schema  |
+| sakila              |
+| sys                 |
+| world               |
+| x                   |
+| y                   |
++---------------------+
+11 rows in set (0.00 sec)
+
+
+mysql> create database if not exists y;
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> use y;
+Database changed
+mysql> select database();
++------------+
+| database() |
++------------+
+| y          |
++------------+
+1 row in set (0.00 sec)
+
+mysql> create table a(c1  int, c2 char(10), c3 varchar(10), c4 date, c5 bool);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| c1    | int         | YES  |     | NULL    |       |
+| c2    | char(10)    | YES  |     | NULL    |       |
+| c3    | varchar(10) | YES  |     | NULL    |       |
+| c4    | date        | YES  |     | NULL    |       |
+| c5    | tinyint(1)  | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> create table if not exists  a(c1  int, c2 char(10), c3 varchar(10), c4 date, c5 bool);
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| c1    | int         | YES  |     | NULL    |       |
+| c2    | char(10)    | YES  |     | NULL    |       |
+| c3    | varchar(10) | YES  |     | NULL    |       |
+| c4    | date        | YES  |     | NULL    |       |
+| c5    | tinyint(1)  | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+
+mysql> show columns from a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| c1    | int         | YES  |     | NULL    |       |
+| c2    | char(10)    | YES  |     | NULL    |       |
+| c3    | varchar(10) | YES  |     | NULL    |       |
+| c4    | date        | YES  |     | NULL    |       |
+| c5    | tinyint(1)  | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> use db1
+Database changed
+mysql> desc emp;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| EMPNO     | int         | NO   | PRI | NULL    |       |
+| ENAME     | varchar(12) | YES  |     | NULL    |       |
+| GENDER    | char(1)     | YES  |     | NULL    |       |
+| JOB       | varchar(20) | YES  |     | NULL    |       |
+| MGR       | int         | YES  | MUL | NULL    |       |
+| HIREDATE  | date        | YES  |     | NULL    |       |
+| SAL       | int         | YES  |     | NULL    |       |
+| COMM      | int         | YES  |     | NULL    |       |
+| DEPTNO    | int         | NO   | MUL | NULL    |       |
+| BONUSID   | int         | YES  |     | NULL    |       |
+| USER NAME | varchar(20) | YES  |     | NULL    |       |
+| PWD       | varchar(20) | YES  |     | NULL    |       |
+| PHONE     | varchar(45) | YES  |     | NULL    |       |
+| isActive  | tinyint(1)  | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+14 rows in set (0.00 sec)
+
+mysql> show columns from emp;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| EMPNO     | int         | NO   | PRI | NULL    |       |
+| ENAME     | varchar(12) | YES  |     | NULL    |       |
+| GENDER    | char(1)     | YES  |     | NULL    |       |
+| JOB       | varchar(20) | YES  |     | NULL    |       |
+| MGR       | int         | YES  | MUL | NULL    |       |
+| HIREDATE  | date        | YES  |     | NULL    |       |
+| SAL       | int         | YES  |     | NULL    |       |
+| COMM      | int         | YES  |     | NULL    |       |
+| DEPTNO    | int         | NO   | MUL | NULL    |       |
+| BONUSID   | int         | YES  |     | NULL    |       |
+| USER NAME | varchar(20) | YES  |     | NULL    |       |
+| PWD       | varchar(20) | YES  |     | NULL    |       |
+| PHONE     | varchar(45) | YES  |     | NULL    |       |
+| isActive  | tinyint(1)  | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+14 rows in set (0.00 sec)
+
+mysql> show columns from emp like 'E%';
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| EMPNO | int         | NO   | PRI | NULL    |       |
+| ENAME | varchar(12) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc emp;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| EMPNO     | int         | NO   | PRI | NULL    |       |
+| ENAME     | varchar(12) | YES  |     | NULL    |       |
+| GENDER    | char(1)     | YES  |     | NULL    |       |
+| JOB       | varchar(20) | YES  |     | NULL    |       |
+| MGR       | int         | YES  | MUL | NULL    |       |
+| HIREDATE  | date        | YES  |     | NULL    |       |
+| SAL       | int         | YES  |     | NULL    |       |
+| COMM      | int         | YES  |     | NULL    |       |
+| DEPTNO    | int         | NO   | MUL | NULL    |       |
+| BONUSID   | int         | YES  |     | NULL    |       |
+| USER NAME | varchar(20) | YES  |     | NULL    |       |
+| PWD       | varchar(20) | YES  |     | NULL    |       |
+| PHONE     | varchar(45) | YES  |     | NULL    |       |
+| isActive  | tinyint(1)  | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+14 rows in set (0.00 sec)
+
+mysql> show columns from emp;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| EMPNO     | int         | NO   | PRI | NULL    |       |
+| ENAME     | varchar(12) | YES  |     | NULL    |       |
+| GENDER    | char(1)     | YES  |     | NULL    |       |
+| JOB       | varchar(20) | YES  |     | NULL    |       |
+| MGR       | int         | YES  | MUL | NULL    |       |
+| HIREDATE  | date        | YES  |     | NULL    |       |
+| SAL       | int         | YES  |     | NULL    |       |
+| COMM      | int         | YES  |     | NULL    |       |
+| DEPTNO    | int         | NO   | MUL | NULL    |       |
+| BONUSID   | int         | YES  |     | NULL    |       |
+| USER NAME | varchar(20) | YES  |     | NULL    |       |
+| PWD       | varchar(20) | YES  |     | NULL    |       |
+| PHONE     | varchar(45) | YES  |     | NULL    |       |
+| isActive  | tinyint(1)  | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+14 rows in set (0.00 sec)
+
+mysql> explain emp;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| EMPNO     | int         | NO   | PRI | NULL    |       |
+| ENAME     | varchar(12) | YES  |     | NULL    |       |
+| GENDER    | char(1)     | YES  |     | NULL    |       |
+| JOB       | varchar(20) | YES  |     | NULL    |       |
+| MGR       | int         | YES  | MUL | NULL    |       |
+| HIREDATE  | date        | YES  |     | NULL    |       |
+| SAL       | int         | YES  |     | NULL    |       |
+| COMM      | int         | YES  |     | NULL    |       |
+| DEPTNO    | int         | NO   | MUL | NULL    |       |
+| BONUSID   | int         | YES  |     | NULL    |       |
+| USER NAME | varchar(20) | YES  |     | NULL    |       |
+| PWD       | varchar(20) | YES  |     | NULL    |       |
+| PHONE     | varchar(45) | YES  |     | NULL    |       |
+| isActive  | tinyint(1)  | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+14 rows in set (0.00 sec)
+
+mysql> use y;
+Database changed
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| c1    | int         | YES  |     | NULL    |       |
+| c2    | char(10)    | YES  |     | NULL    |       |
+| c3    | varchar(10) | YES  |     | NULL    |       |
+| c4    | date        | YES  |     | NULL    |       |
+| c5    | tinyint(1)  | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select database();
++------------+
+| database() |
++------------+
+| y          |
++------------+
+1 row in set (0.00 sec)
+
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| c1    | int         | YES  |     | NULL    |       |
+| c2    | char(10)    | YES  |     | NULL    |       |
+| c3    | varchar(10) | YES  |     | NULL    |       |
+| c4    | date        | YES  |     | NULL    |       |
+| c5    | tinyint(1)  | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql>  show databases;
++---------------------+
+| Database            |
++---------------------+
+| db1                 |
+| information_schema  |
+| interview questions |
+| mysql               |
+| newdb               |
+| performance_schema  |
+| sakila              |
+| sys                 |
+| world               |
+| x                   |
+| y                   |
++---------------------+
+11 rows in set (0.00 sec)
+
+mysql> select database();
++------------+
+| database() |
++------------+
+| y          |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select database();
++------------+
+| database() |
++------------+
+| y          |
++------------+
+1 row in set (0.00 sec)
+
+mysql> show databases;
++---------------------+
+| Database            |
++---------------------+
+| db1                 |
+| information_schema  |
+| interview questions |
+| mysql               |
+| newdb               |
+| performance_schema  |
+| sakila              |
+| sys                 |
+| world               |
+| x                   |
+| y                   |
++---------------------+
+11 rows in set (0.00 sec)
+
+
+mysql> show databases;
++---------------------+
+| Database            |
++---------------------+
+| db1                 |
+| information_schema  |
+| interview questions |
+| mysql               |
+| newdb               |
+| performance_schema  |
+| sakila              |
+| sys                 |
+| world               |
+| x                   |
+| y                   |
+| z                   |
++---------------------+
+12 rows in set (0.00 sec)
+
+mysql> use y;
+Database changed
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| c1    | int         | YES  |     | NULL    |       |
+| c2    | char(10)    | YES  |     | NULL    |       |
+| c3    | varchar(10) | YES  |     | NULL    |       |
+| c4    | date        | YES  |     | NULL    |       |
+| c5    | tinyint(1)  | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> create table z.emp(c1 int);
+Query OK, 0 rows affected (1 min 28.66 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| c1    | int         | YES  |     | NULL    |       |
+| c2    | char(10)    | YES  |     | NULL    |       |
+| c3    | varchar(10) | YES  |     | NULL    |       |
+| c4    | date        | YES  |     | NULL    |       |
+| c5    | tinyint(1)  | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> create database a;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> use a;
+Database changed
+mysql> create table a (c1 int);
+Query OK, 0 rows affected (0.03 sec)
+
+
+mysql> drop table a;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> drop database a;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> use y;
+Database changed
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| c1    | int         | YES  |     | NULL    |       |
+| c2    | char(10)    | YES  |     | NULL    |       |
+| c3    | varchar(10) | YES  |     | NULL    |       |
+| c4    | date        | YES  |     | NULL    |       |
+| c5    | tinyint(1)  | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> show tables;
++-------------+
+| Tables_in_y |
++-------------+
+| a           |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| c1    | int         | YES  |     | NULL    |       |
+| c2    | char(10)    | YES  |     | NULL    |       |
+| c3    | varchar(10) | YES  |     | NULL    |       |
+| c4    | date        | YES  |     | NULL    |       |
+| c5    | tinyint(1)  | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> insert into a(c5,c2) values(True, 'saleel');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into a(c5,c2) values(false, 'sharmin');
+Query OK, 1 row affected (0.00 sec)
+
+mysql>
+mysql> insert into a(c5,c2) values(1, 'ruhan');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into a(c5,c2) values(0, 'neel');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into a(c5,c2) values(10 <12, 'ramram');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from a;
++------+---------+------+------+------+
+| c1   | c2      | c3   | c4   | c5   |
++------+---------+------+------+------+
+| NULL | saleel  | NULL | NULL |    1 |
+| NULL | sharmin | NULL | NULL |    0 |
+| NULL | ruhan   | NULL | NULL |    1 |
+| NULL | neel    | NULL | NULL |    0 |
+| NULL | ramram  | NULL | NULL |    1 |
++------+---------+------+------+------+
+5 rows in set (0.00 sec)
+
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| c1    | int         | YES  |     | NULL    |       |
+| c2    | char(10)    | YES  |     | NULL    |       |
+| c3    | varchar(10) | YES  |     | NULL    |       |
+| c4    | date        | YES  |     | NULL    |       |
+| c5    | tinyint(1)  | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> create table emp(ID int, ename varchar(10) not null, city varchar(10) default 'baroda' );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc emp;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| ID    | int         | YES  |     | NULL    |       |
+| ename | varchar(10) | NO   |     | NULL    |       |
+| city  | varchar(10) | YES  |     | baroda  |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into emp(id, ename, city) values(1,'saleel', default);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++------+--------+--------+
+| ID   | ename  | city   |
++------+--------+--------+
+|    1 | saleel | baroda |
++------+--------+--------+
+1 row in set (0.00 sec)
+
+mysql> insert into emp(id, ename, city) values(2,'salu', 'surrat');
+Query OK, 1 row affected (0.00 sec)
+
+
+mysql> select * from emp;
++------+--------+--------+
+| ID   | ename  | city   |
++------+--------+--------+
+|    1 | saleel | baroda |
+|    2 | salu   | surrat |
++------+--------+--------+
+2 rows in set (0.00 sec)
+
+mysql> insert into emp(id, ename, city) values(2+1,'salu', 'surrat');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++------+--------+--------+
+| ID   | ename  | city   |
++------+--------+--------+
+|    1 | saleel | baroda |
+|    2 | salu   | surrat |
+|    3 | salu   | surrat |
++------+--------+--------+
+3 rows in set (0.00 sec)
+
+mysql> insert into emp values(1000,1000,1000), (4000,4000,4000);
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp;
++------+--------+--------+
+| ID   | ename  | city   |
++------+--------+--------+
+|    1 | saleel | baroda |
+|    2 | salu   | surrat |
+|    3 | salu   | surrat |
+| 1000 | 1000   | 1000   |
+| 4000 | 4000   | 4000   |
++------+--------+--------+
+5 rows in set (0.00 sec)
+
+mysql> drop table emp;
+Query OK, 0 rows affected (0.03 sec)
+
+
+mysql> create table emp(id int auto_increment primary key, ename varchar(10) not null, accountNo varbinary(10), sal int, gSalary int generated always as (sal * 12), pwd varchar(10) invisible);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc emp;
++-----------+---------------+------+-----+---------+-------------------+
+| Field     | Type          | Null | Key | Default | Extra             |
++-----------+---------------+------+-----+---------+-------------------+
+| id        | int           | NO   | PRI | NULL    | auto_increment    |
+| ename     | varchar(10)   | NO   |     | NULL    |                   |
+| accountNo | varbinary(10) | YES  |     | NULL    |                   |
+| sal       | int           | YES  |     | NULL    |                   |
+| gSalary   | int           | YES  |     | NULL    | VIRTUAL GENERATED |
+| pwd       | varchar(10)   | YES  |     | NULL    | INVISIBLE         |
++-----------+---------------+------+-----+---------+-------------------+
+6 rows in set (0.00 sec)
+
+mysql> insert into emp(ename, accountNo, sal, pwd) values('saleel', 'A/C 1007', 1000,'saleel');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++----+--------+----------------------+------+---------+
+| id | ename  | accountNo            | sal  | gSalary |
++----+--------+----------------------+------+---------+
+|  1 | saleel | 0x412F432031303037   | 1000 |   12000 |
++----+--------+----------------------+------+---------+
+1 row in set (0.00 sec)
+
+mysql> select md5('s');
++----------------------------------+
+| md5('s')                         |
++----------------------------------+
+| 03c7c0ace395d80182db07ae2c30f034 |
++----------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select id, ename, accountNo, sal, gSalary, pwd from emp;
++----+--------+----------------------+------+---------+--------+
+| id | ename  | accountNo            | sal  | gSalary | pwd    |
++----+--------+----------------------+------+---------+--------+
+|  1 | saleel | 0x412F432031303037   | 1000 |   12000 | saleel |
++----+--------+----------------------+------+---------+--------+
+1 row in set (0.00 sec)
+
+mysql> select accountNo, accountNo  from emp;
++----------------------+----------------------+
+| accountNo            | accountNo            |
++----------------------+----------------------+
+| 0x412F432031303037   | 0x412F432031303037   |
++----------------------+----------------------+
+1 row in set (0.00 sec)
+
+mysql> select accountNo, cast(accountNo as char)  from emp;
++----------------------+-------------------------+
+| accountNo            | cast(accountNo as char) |
++----------------------+-------------------------+
+| 0x412F432031303037   | A/C 1007                |
++----------------------+-------------------------+
+1 row in set (0.01 sec)
+
+mysql> insert into emp(ename, accountNo, sal, pwd) values('saleel', 'A/C 1007', 1000,'saleel');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into emp(ename, accountNo, sal, pwd) values('saleel', 'A/C 1007', 1000,'saleel');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++----+--------+----------------------+------+---------+
+| id | ename  | accountNo            | sal  | gSalary |
++----+--------+----------------------+------+---------+
+|  1 | saleel | 0x412F432031303037   | 1000 |   12000 |
+|  2 | saleel | 0x412F432031303037   | 1000 |   12000 |
+|  3 | saleel | 0x412F432031303037   | 1000 |   12000 |
++----+--------+----------------------+------+---------+
+3 rows in set (0.00 sec)
+
+mysql> insert into emp(id, ename) values(100, 'zzz');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++-----+--------+----------------------+------+---------+
+| id  | ename  | accountNo            | sal  | gSalary |
++-----+--------+----------------------+------+---------+
+|   1 | saleel | 0x412F432031303037   | 1000 |   12000 |
+|   2 | saleel | 0x412F432031303037   | 1000 |   12000 |
+|   3 | saleel | 0x412F432031303037   | 1000 |   12000 |
+| 100 | zzz    | NULL                 | NULL |    NULL |
++-----+--------+----------------------+------+---------+
+4 rows in set (0.00 sec)
+
+mysql> insert into emp(id, ename) values(default, 'zzz');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++-----+--------+----------------------+------+---------+
+| id  | ename  | accountNo            | sal  | gSalary |
++-----+--------+----------------------+------+---------+
+|   1 | saleel | 0x412F432031303037   | 1000 |   12000 |
+|   2 | saleel | 0x412F432031303037   | 1000 |   12000 |
+|   3 | saleel | 0x412F432031303037   | 1000 |   12000 |
+| 100 | zzz    | NULL                 | NULL |    NULL |
+| 101 | zzz    | NULL                 | NULL |    NULL |
++-----+--------+----------------------+------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select 2+2;
++-----+
+| 2+2 |
++-----+
+|   4 |
++-----+
+1 row in set (0.00 sec)
+
+mysql> select 2+null;
++--------+
+| 2+null |
++--------+
+|   NULL |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select null *12;
++----------+
+| null *12 |
++----------+
+|     NULL |
++----------+
+1 row in set (0.00 sec)
+
+
+mysql> insert into emp(id, ename) values(null, 'zzz');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++-----+--------+----------------------+------+---------+
+| id  | ename  | accountNo            | sal  | gSalary |
++-----+--------+----------------------+------+---------+
+|   1 | saleel | 0x412F432031303037   | 1000 |   12000 |
+|   2 | saleel | 0x412F432031303037   | 1000 |   12000 |
+|   3 | saleel | 0x412F432031303037   | 1000 |   12000 |
+| 100 | zzz    | NULL                 | NULL |    NULL |
+| 101 | zzz    | NULL                 | NULL |    NULL |
+| 102 | zzz    | NULL                 | NULL |    NULL |
++-----+--------+----------------------+------+---------+
+6 rows in set (0.00 sec)
+
+mysql> insert into emp(id, ename) values(-1, 'zzz');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++-----+--------+----------------------+------+---------+
+| id  | ename  | accountNo            | sal  | gSalary |
++-----+--------+----------------------+------+---------+
+|  -1 | zzz    | NULL                 | NULL |    NULL |
+|   1 | saleel | 0x412F432031303037   | 1000 |   12000 |
+|   2 | saleel | 0x412F432031303037   | 1000 |   12000 |
+|   3 | saleel | 0x412F432031303037   | 1000 |   12000 |
+| 100 | zzz    | NULL                 | NULL |    NULL |
+| 101 | zzz    | NULL                 | NULL |    NULL |
+| 102 | zzz    | NULL                 | NULL |    NULL |
++-----+--------+----------------------+------+---------+
+7 rows in set (0.00 sec)
+
+mysql> insert into emp(id, ename) values(null, 'zzz');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++-----+--------+----------------------+------+---------+
+| id  | ename  | accountNo            | sal  | gSalary |
++-----+--------+----------------------+------+---------+
+|  -1 | zzz    | NULL                 | NULL |    NULL |
+|   1 | saleel | 0x412F432031303037   | 1000 |   12000 |
+|   2 | saleel | 0x412F432031303037   | 1000 |   12000 |
+|   3 | saleel | 0x412F432031303037   | 1000 |   12000 |
+| 100 | zzz    | NULL                 | NULL |    NULL |
+| 101 | zzz    | NULL                 | NULL |    NULL |
+| 102 | zzz    | NULL                 | NULL |    NULL |
+| 103 | zzz    | NULL                 | NULL |    NULL |
++-----+--------+----------------------+------+---------+
+8 rows in set (0.00 sec)
+
+mysql> create table emp(
+    ->    id int auto_increment primary key,
+    ->    ename varchar(10)
+
+mysql> create table emp1(
+    ->    id int auto_increment primary key,
+    ->    ename varchar(10)
+    -> ) auto_increment = 2;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> insert into emp1(ename) value('sss');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp1;
++----+-------+
+| id | ename |
++----+-------+
+|  2 | sss   |
++----+-------+
+1 row in set (0.00 sec)
+
+mysql> insert into emp1(ename) value('sss');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp1;
++----+-------+
+| id | ename |
++----+-------+
+|  2 | sss   |
+|  3 | sss   |
++----+-------+
+2 rows in set (0.00 sec)
+
+mysql> show variables like '%auto%';
++----------------------------------------------+-------+
+| Variable_name                                | Value |
++----------------------------------------------+-------+
+| auto_generate_certs                          | ON    |
+| auto_increment_increment                     | 1     |
+| auto_increment_offset                        | 1     |
+| autocommit                                   | OFF   |
+| automatic_sp_privileges                      | ON    |
+| binlog_expire_logs_auto_purge                | ON    |
+| caching_sha2_password_auto_generate_rsa_keys | ON    |
+| innodb_autoextend_increment                  | 64    |
+| innodb_autoinc_lock_mode                     | 2     |
+| innodb_stats_auto_recalc                     | ON    |
+| sha256_password_auto_generate_rsa_keys       | ON    |
+| sql_auto_is_null                             | OFF   |
++----------------------------------------------+-------+
+12 rows in set (0.01 sec)
+
+mysql> show variables like 'auto%';
++--------------------------+-------+
+| Variable_name            | Value |
++--------------------------+-------+
+| auto_generate_certs      | ON    |
+| auto_increment_increment | 1     |
+| auto_increment_offset    | 1     |
+| autocommit               | OFF   |
+| automatic_sp_privileges  | ON    |
++--------------------------+-------+
+5 rows in set (0.00 sec)
+
+mysql> create table x(c1 int);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into x values(1001), (1001.45), (10001.54);
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from x;
++-------+
+| c1    |
++-------+
+|  1001 |
+|  1001 |
+| 10002 |
++-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into x values(1.45), (1.54);
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from x;
++-------+
+| c1    |
++-------+
+|  1001 |
+|  1001 |
+| 10002 |
+|     1 |
+|     2 |
++-------+
+5 rows in set (0.00 sec)
+
+
+-----------------------------------------------------
+
+mysql> create table f1 (id int, ename varchar(10), dt date, sal int);
+Query OK, 0 rows affected (0.04 sec)
+
+
+mysql> create table f2 (c1 int, c2 varchar(10), c3 date, c4 int);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> load data infile "c:/a/f1.csv" into table f1 fields terminated by "," lines terminated by "\n"
+    -> ;
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Deleted: 0  Skipped: 0  Warnings: 0
+
+mysql> load data infile "c:/a/f2.csv" into table f2 fields terminated by "," lines terminated by "\n" ignore 1 rows
+    -> ;
+Query OK, 1 row affected (0.00 sec)
+Records: 1  Deleted: 0  Skipped: 0  Warnings: 0
+
+mysql> select * from f1;
++------+--------+------------+------+
+| id   | ename  | dt         | sal  |
++------+--------+------------+------+
+|    1 | saleel | 2026-10-08 | 5000 |
+|   11 | saleel | 2026-10-08 | 5000 |
++------+--------+------------+------+
+2 rows in set (0.00 sec)
+
+mysql> table f2;
++------+---------+------------+------+
+| c1   | c2      | c3         | c4   |
++------+---------+------------+------+
+|    2 | sharmin | 2026-10-08 | 5000 |
++------+---------+------------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from f2;
++------+---------+------------+------+
+| c1   | c2      | c3         | c4   |
++------+---------+------------+------+
+|    2 | sharmin | 2026-10-08 | 5000 |
++------+---------+------------+------+
+1 row in set (0.00 sec)
+
+mysql> show engines;
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| Engine             | Support | Comment                                                        | Transactions | XA   | Savepoints |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables      | NO           | NO   | NO         |
+| MRG_MYISAM         | YES     | Collection of identical MyISAM tables                          | NO           | NO   | NO         |
+| CSV                | YES     | CSV storage engine                                             | NO           | NO   | NO         |
+| FEDERATED          | NO      | Federated MySQL storage engine                                 | NULL         | NULL | NULL       |
+| PERFORMANCE_SCHEMA | YES     | Performance Schema                                             | NO           | NO   | NO         |
+| MyISAM             | YES     | MyISAM storage engine                                          | NO           | NO   | NO         |
+| InnoDB             | DEFAULT | Supports transactions, row-level locking, and foreign keys     | YES          | YES  | YES        |
+| ndbinfo            | NO      | MySQL Cluster system information storage engine                | NULL         | NULL | NULL       |
+| BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it disappears) | NO           | NO   | NO         |
+| ARCHIVE            | YES     | Archive storage engine                                         | NO           | NO   | NO         |
+| ndbcluster         | NO      | Clustered, fault-tolerant tables                               | NULL         | NULL | NULL       |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+11 rows in set (0.00 sec)
+       show
+mysql> show variables like 'auto%';
++--------------------------+-------+
+| Variable_name            | Value |
++--------------------------+-------+
+| auto_generate_certs      | ON    |
+| auto_increment_increment | 1     |
+| auto_increment_offset    | 1     |
+| autocommit               | OFF   |
+| automatic_sp_privileges  | ON    |
++--------------------------+-------+
+5 rows in set (0.01 sec)
+
+mysql> show engines;
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| Engine             | Support | Comment                                                        | Transactions | XA   | Savepoints |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables      | NO           | NO   | NO         |
+| MRG_MYISAM         | YES     | Collection of identical MyISAM tables                          | NO           | NO   | NO         |
+| CSV                | YES     | CSV storage engine                                             | NO           | NO   | NO         |
+| FEDERATED          | NO      | Federated MySQL storage engine                                 | NULL         | NULL | NULL       |
+| PERFORMANCE_SCHEMA | YES     | Performance Schema                                             | NO           | NO   | NO         |
+| MyISAM             | YES     | MyISAM storage engine                                          | NO           | NO   | NO         |
+| InnoDB             | DEFAULT | Supports transactions, row-level locking, and foreign keys     | YES          | YES  | YES        |
+| ndbinfo            | NO      | MySQL Cluster system information storage engine                | NULL         | NULL | NULL       |
+| BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it disappears) | NO           | NO   | NO         |
+| ARCHIVE            | YES     | Archive storage engine                                         | NO           | NO   | NO         |
+| ndbcluster         | NO      | Clustered, fault-tolerant tables                               | NULL         | NULL | NULL       |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+11 rows in set (0.00 sec)
+
+mysql> create table q(c1 int) engine = memory;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tables;
++-------------+
+| Tables_in_z |
++-------------+
+| emp         |
+| f1          |
+| f2          |
+| q           |
++-------------+
+4 rows in set (0.00 sec)
+
+mysql> insert into q values(-1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from q;
++------+
+| c1   |
++------+
+|   -1 |
++------+
+1 row in set (0.00 sec)
+
+mysql> select * from q;
++------+
+| c1   |
++------+
+|   -1 |
++------+
+1 row in set (0.00 sec)
+
+mysql> select * from q;
++------+
+| c1   |
++------+
+|   -1 |
++------+
+1 row in set (0.00 sec)
+
+mysql> select * from q;
+ERROR 2013 (HY000): Lost connection to MySQL server during query
+No connection. Trying to reconnect...
+Connection id:    11
+Current database: z
+
+Empty set (0.04 sec)
+
+mysql> select * from q;
+Empty set (0.00 sec)
+
+mysql> create table dept(id int, dname varchar(10), loc varchar(10)) engine = csv;
+
+
+mysql> create table dept(id int not null, dname varchar(10) not null, loc varchar(10) not null) engine = csv;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc dept;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   |     | NULL    |       |
+| dname | varchar(10) | NO   |     | NULL    |       |
+| loc   | varchar(10) | NO   |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> select database();
++------------+
+| database() |
++------------+
+| z          |
++------------+
+1 row in set (0.00 sec)
+
+mysql> desc dept;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   |     | NULL    |       |
+| dname | varchar(10) | NO   |     | NULL    |       |
+| loc   | varchar(10) | NO   |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
+mysql> insert into dept values(10, 'sales', 'baroda');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from dept;
++----+-------+--------+
+| id | dname | loc    |
++----+-------+--------+
+| 10 | sales | baroda |
++----+-------+--------+
+1 row in set (0.00 sec)
+
+mysql> drop table dept;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tables;
++-------------+
+| Tables_in_z |
++-------------+
+| emp         |
+| f1          |
+| f2          |
+| q           |
++-------------+
+4 rows in set (0.00 sec)
+
+mysql> select md5('a');
++----------------------------------+
+| md5('a')                         |
++----------------------------------+
+| 0cc175b9c0f1b6a831c399e269772661 |
++----------------------------------+
+1 row in set (0.00 sec)
+
+mysql> create table x(c1 int, c2 varchar(10));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into x values(1,md5('s'));
+ERROR 1406 (22001): Data too long for column 'c2' at row 1
+mysql> drop table x;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table x(c1 int, c2 varchar(100));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into x values(1,md5('s'));
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from x;
++------+----------------------------------+
+| c1   | c2                               |
++------+----------------------------------+
+|    1 | 03c7c0ace395d80182db07ae2c30f034 |
++------+----------------------------------+
+1 row in set (0.00 sec)
+
+mysql> drop table x;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table x(c1 int, c2 varchar(10), c3 varchar(100));
+Query OK, 0 rows affected (0.02 sec)
+
+
+mysql> insert into x values(1,'saleel', md5('saleel'));
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from x;
++------+--------+----------------------------------+
+| c1   | c2     | c3                               |
++------+--------+----------------------------------+
+|    1 | saleel | 21f055cf1d7bc728458eceb50a4e12f8 |
++------+--------+----------------------------------+
+1 row in set (0.00 sec)
+
+mysql> drop table x;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table x(c1 int, c2 varchar(10),hash varchar(100) invisible );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into x values(1,'saleel', md5('saleel'));
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> desc x;
++-------+--------------+------+-----+---------+-----------+
+| Field | Type         | Null | Key | Default | Extra     |
++-------+--------------+------+-----+---------+-----------+
+| c1    | int          | YES  |     | NULL    |           |
+| c2    | varchar(10)  | YES  |     | NULL    |           |
+| hash  | varchar(100) | YES  |     | NULL    | INVISIBLE |
++-------+--------------+------+-----+---------+-----------+
+3 rows in set (0.00 sec)
+
+
+mysql> insert into x(c1, c2, hash) values(1,'saleel', md5('saleel'));
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from x;
++------+--------+
+| c1   | c2     |
++------+--------+
+|    1 | saleel |
++------+--------+
+1 row in set (0.00 sec)
+
+mysql> select c1, c2, hash from x;
++------+--------+----------------------------------+
+| c1   | c2     | hash                             |
++------+--------+----------------------------------+
+|    1 | saleel | 21f055cf1d7bc728458eceb50a4e12f8 |
++------+--------+----------------------------------+
+1 row in set (0.00 sec)
+
+mysql> insert into x(c1, c2, hash) values(2,'sharmin', md5('sharmin'));
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select c1, c2, hash from x;
++------+---------+----------------------------------+
+| c1   | c2      | hash                             |
++------+---------+----------------------------------+
+|    1 | saleel  | 21f055cf1d7bc728458eceb50a4e12f8 |
+|    2 | sharmin | 30f88072b59fcea5b439f0fec08d89bb |
++------+---------+----------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> select c1, c2, hash from x where md5(c2) = hash ;
++------+---------+----------------------------------+
+| c1   | c2      | hash                             |
++------+---------+----------------------------------+
+|    1 | saleel  | 21f055cf1d7bc728458eceb50a4e12f8 |
+|    2 | sharmin | 30f88072b59fcea5b439f0fec08d89bb |
++------+---------+----------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> select c1, c2, hash from x where md5(c2) = hash and c1=1;
++------+--------+----------------------------------+
+| c1   | c2     | hash                             |
++------+--------+----------------------------------+
+|    1 | saleel | 21f055cf1d7bc728458eceb50a4e12f8 |
++------+--------+----------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select c1, c2, hash from x where md5(c2) = hash ;
++------+---------+----------------------------------+
+| c1   | c2      | hash                             |
++------+---------+----------------------------------+
+|    1 | saleel  | 21f055cf1d7bc728458eceb50a4e12f8 |
+|    2 | sharmin | 30f88072b59fcea5b439f0fec08d89bb |
++------+---------+----------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> select user();
++----------------+
+| user()         |
++----------------+
+| root@localhost |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select md5('s');
++----------------------------------+
+| md5('s')                         |
++----------------------------------+
+| 03c7c0ace395d80182db07ae2c30f034 |
++----------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select md5('s'), sha2('s', 256);
++----------------------------------+------------------------------------------------------------------+
+| md5('s')                         | sha2('s', 256)                                                   |
++----------------------------------+------------------------------------------------------------------+
+| 03c7c0ace395d80182db07ae2c30f034 | 043a718774c572bd8a25adbeb1bfcd5c0256ae11cecf9f9c3f925d0e52beaf89 |
++----------------------------------+------------------------------------------------------------------+
+1 row in set (0.00 sec)
