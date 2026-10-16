@@ -14,7 +14,7 @@ select number from student_phone order by number;
 
 select address from student_address where studentid=2 or studentid=4 or studentid=6 or studentid=10 order by studentid desc;
 
- select * from course order by name;
+select * from course order by name;
 
 select * from student_qualifications where college='New York';
 
